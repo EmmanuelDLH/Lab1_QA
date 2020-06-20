@@ -100,12 +100,12 @@ export class Venta {
     }
 
     calcularSubTotal(): number{
-        let subTotal = 0.0;
+        let subTotal = 0.0; // 1
         // tslint:disable-next-line: prefer-for-of
-        for (let i = 0; i < this.ventaDetalles.length; i++){
-            subTotal = subTotal + this.ventaDetalles[i].getSubTotal();
+        for (let i = 0; i < this.ventaDetalles.length; i++){ // 2
+            subTotal = subTotal + this.ventaDetalles[i].getSubTotal(); // 3
         }
-        return subTotal;
+        return subTotal; // 4
     }
 
     calcularImpuesto(): number{
