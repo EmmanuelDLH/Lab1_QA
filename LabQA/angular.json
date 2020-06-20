@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "LabQA"
+    }
+  },
+  "defaultProject": "LabQA",
+  "cli": {
+    "analytics": false
+  }
 }

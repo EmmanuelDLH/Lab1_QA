@@ -2,6 +2,7 @@ import { Venta } from './venta.model';
 import { Cliente } from './cliente.model';
 import { VentaDetalle } from './venta-detalle.model';
 import { Producto } from './producto.model';
+import { componentFactoryName } from '@angular/compiler';
 
 // Datos para poder hacer las pruebas:
 // Productos para los detalles de Ventas
@@ -52,7 +53,7 @@ ventaDetalle.setMontoIva();
 
 const ventaDetalle2 = new VentaDetalle();
 ventaDetalle2.setId(2);
-ventaDetalle2.setProducto(producto);
+ventaDetalle2.setProducto(producto2);
 ventaDetalle2.setCantidad(1);
 ventaDetalle2.setPrecio();
 ventaDetalle2.setPorcenDesc(10);
@@ -112,4 +113,19 @@ describe('Casos de Prueba para Venta sin la informacion de productos', () => {
   it('Calcular descuento de Venta2', () => {
     expect(venta2.calcularDescuento()).toBe(0);
   });
+});
+
+describe('Casos de prueba para informacion de detalle de venta', function () {
+  it('Casos de prueba para corroborar error cuando se envia posicion fuera de rango al pedir detalle de venta', () => {
+    //variable utilizada es el array vacio ventaDetalle del objeto venta2
+  [
+    //cada index representa el valor que se busca dentro del array ventaDetalle
+    {index: 0},
+    {index:1},
+    {index: 50},
+  ].forEach(({ index }) => {
+    expect(function () {venta2.getVentaDetalleInfo(index)}).toThrowError('Posición fuera de rango')
+  })
+  //El objeto venta2 no tiene ningun item en su lista de detallos, por lo tanto cualquier valor enviado debe tirar el error Posicion fuera de rango
+});
 });
