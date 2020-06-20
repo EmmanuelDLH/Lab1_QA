@@ -83,6 +83,7 @@ venta2.setVendedor('Vicente');
 venta2.setEstado('Pendiente');
 venta2.setTipoDocumento('Factura');
 
+//Prueba por defecto
 describe('Venta', () => {
   it('should create an instance', () => {
     expect(new Venta()).toBeTruthy();
@@ -91,6 +92,26 @@ describe('Venta', () => {
 
 describe('Casos de Prueba para Venta con la informacion de productos', () => {
   // Tres pruebas que manejan datos para poder recorrer uno de los caminos
+  /* 
+    Detalle 1: 
+
+      Valor compra producto: 10000
+      Valor venta producto: 15000
+      Descuento producto: 0
+      IVA producto: 10
+      IVA detalle: 5
+      Descuento detalle: 5
+
+    Detalle 2:
+
+    Valor compra producto: 10000
+    Valor venta producto: 15000
+    Descuento producto: 0
+    IVA producto: 10
+    IVA detalle: 5
+    Descuento detalle: 10
+
+  */
   it('Calcular subtotal de Venta', () => {
     expect(venta.calcularSubTotal()).toBe(45000);
   });
@@ -113,6 +134,7 @@ describe('Casos de Prueba para Venta sin la informacion de productos', () => {
   it('Calcular descuento de Venta2', () => {
     expect(venta2.calcularDescuento()).toBe(0);
   });
+  //Deben dar 0 ya que venta2 no posee productos con los cuales calcular los valores contemplados
 });
 
 describe('Casos de prueba para informacion de detalle de venta', function () {
